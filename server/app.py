@@ -19,7 +19,8 @@ args = TTSettings(num_beams=5, min_length=1)
 
 @app.route('/score', methods=['POST'])
 def score():
-    text = request.json.get('text', '')
+    print(request.json)
+    text = request.json.get('data', {}).get('text', '')
     print(text)
     res = get_score(text)
     print(res)

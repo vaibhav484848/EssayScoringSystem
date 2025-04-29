@@ -4,9 +4,14 @@ export default function InputContainer(){
     const [text, setText] = useState("")
     const [score,setScore]=useState(0);
     async function handleSubmit(){
-        const response=await axios.post('http://127.0.0.1:5000',
+        const response=await axios.post('http://127.0.0.1:5001/score',
             {
-                "text":text,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data: {
+                    "text":text,
+                }
             }
         )
         setScore(response.data);
